@@ -1,110 +1,138 @@
-namespace Homework2
+namespace Homework3
 {
-    internal class Program // Не успел сделать задачи номер 5 и номер 7, 4-ю вроде разбирали на уроке.
+    internal class Program //
     {
         static void Main(string[] args)
         {
-            func1(); // подставление нужного номера после func для запуска соответствующей части кода на исполнение
+            func(); // подставление нужного номера после func для запуска соответствующей части кода на исполнение
             Console.ReadLine();
         }
-        static void func1() // Задача номер 6 
-        {
-            double x, y, x0, y0, radius;
-            Console.Write("Введите координату Х точки M: ");
-            x = double.Parse(Console.ReadLine());
-            Console.Write("Введите координату Y точки M: ");
-            y = double.Parse(Console.ReadLine());
-            Console.Write("Введите координату Х0 центра круга: ");
-            x0 = double.Parse(Console.ReadLine());
-            Console.Write("Введите координату Y0 центра круга: ");
-            y0 = double.Parse(Console.ReadLine());
-            Console.Write("Введите радиус круга: ");
-            radius = double.Parse(Console.ReadLine());
-
-            double distance = Math.Sqrt((x - x0) * (x - x0) + (y - y0) * (y - y0)); // формула подсчета расстояния между двумя точками
-
-            if (distance <= radius) // условие попадания точки в круг / границу круга или вне круга
-            {
-                Console.WriteLine("Точка M находится внутри или на границе круга.");
-            }
-            else
-            {
-                Console.WriteLine("Точка M находится вне круга.");
-            }
-        }
-        static void func2() // Задача номер 1
+        static void func1() // 1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B. 
         {
             Console.Write("Введите число A: ");
-            double A = double.Parse(Console.ReadLine());
+            double a = Convert.ToDouble(Console.ReadLine());
+
+            Console.Write("Введите степень B: ");
+            int b = Convert.ToInt32(Console.ReadLine());
+
+            double result = 1;
+            for (int i = 0; i < b; i++)
+            {
+                result *= a;
+            }
+
+            Console.WriteLine($"Результат: {result}");
+            Console.ReadKey();
+        }
+        static void func2() // 2.	Пользователь вводит 1 число (A). Вывести все числа от 1 до 1000, которые делятся на A.
+
+        {
+            Console.WriteLine("Введите A:");
+            int A = int.Parse(Console.ReadLine());
+
+            int[] numbers = Enumerable.Range(1, 1000).ToArray();
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % A == 0)
+                {
+                    Console.Write(numbers[i]);
+                    if (i < numbers.Length - 1)
+                    {
+                        Console.Write(", ");
+                    }
+                }
+            }
+            Console.ReadLine();
+        }
+        static void func3() // 3.	Пользователь вводит 1 число (A). Найдите количество положительных целых чисел, квадрат которых меньше A.
+
+        {
+            Console.WriteLine("Введите число A:");
+            int A = Convert.ToInt32(Console.ReadLine());
+
+            int count = 0;
+            for (int i = 1; i * i <= A; i++)
+            {
+                if (A % i == 0 && i * i != A)
+                {
+                    count += 2;
+                }
+                else if (i * i == A)
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine($"Количество положительных целых чисел, квадрат которых меньше {A}, равно {count}");
+            Console.ReadKey();
+        }
+        static void func4() // 4.	Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A). Кроме самого не получилось)
+        {
+            Console.Write("Введите число A: ");
+            int number = int.Parse(Console.ReadLine());
+            int maxdivide = 1;
+            for (int i = 2; i <= number; i++)
+            {
+                if (number % i == 0)
+                {
+                    maxdivide = i;
+                }
+            }
+
+            Console.WriteLine($"Наибольший делитель числа {number} равен {maxdivide}");
+            Console.ReadKey();
+        }
+        static void func5() // 5.	Пользователь вводит 2 числа (A и B). Вывести сумму всех чисел из диапазона от A до B, которые делятся без остатка на 7. (Учтите, что при вводе B может оказаться меньше A).
+        {
+            Console.Write("Введите число A: ");
+            int a = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Введите число B: ");
-            double B = double.Parse(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
 
-            if (A > B)
+            int sum = 0;
+
+            for (int i = a; i <= b; i++)
             {
-                Console.WriteLine($"Сумма A плюс B = {A + B}");
+                if (i % 7 == 0)
+                {
+                    sum += i;
+                }
             }
-            else if (A == B)
-            {
-                Console.WriteLine($"Произведение A умножить на B = {A * B}");
-            }
-            else
-            {
-                Console.WriteLine($"Разница A минус B = {A - B}");
-            }
+
+            Console.WriteLine("Сумма чисел, кратных числу 7: " + sum);
         }
-        static void func3() // Задача номер 2
-
+        static void func6() // 6.	Пользователь вводит 1 положительное число (N). Выведите N-ое число ряда фибоначчи. В ряду фибоначчи каждое следующее число является суммой двух предыдущих. Первое и второе считаются равными 1.
         {
-            Console.Write("Введите координату X: ");
-            double X = double.Parse(Console.ReadLine());
+            {
+                Console.Write("Введите целое положительное число N: ");
+                int n = int.Parse(Console.ReadLine());
+                FibonacciHelper(n);
+            }
+            static void FibonacciHelper(int n)
+            {
+                if (n <= 0)
+                {
+                    throw new ArgumentException("число N является положительным");
+                }
+                else if (n == 1 || n == 2)
+                {
+                    Console.WriteLine($"Число Фибоначчи {n} равняется {1}");
+                }
+                else
+                {
+                    int first = 1;
+                    int second = 1;
 
-            Console.Write("Введите координату Y: ");
-            double Y = double.Parse(Console.ReadLine());
+                    for (int i = 2; i < n; i++)
+                    {
+                        int result = first + second;
+                        first = second;
+                        second = result;
+                    }
 
-            if (X > 0 && Y > 0) // если X,Y больше нуля
-            {
-                Console.WriteLine("Точка принадлежит первой четверти.");
-            }
-            else if (X < 0 && Y > 0) // если X меньше нуля, Y больше нуля
-            {
-                Console.WriteLine("Точка находится во второй четверти.");
-            }
-            else if (X < 0 && Y < 0) // если X  меньше нуля, Y больше нуля
-            {
-                Console.WriteLine("Точка принадлежит третьей четверти.");
-            }
-            else // остальные условия, например Х > 0, Y < 0; X,Y = 0
-            {
-                Console.WriteLine("Точка находится в четвертой четверти.");
-            }
-        }
-        static void func4() // Задача номер 3
-
-        {
-            Console.WriteLine("Введите первое число:");
-            int A = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите второе число:");
-            int B = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите третье число:");
-            int C = Convert.ToInt32(Console.ReadLine());
-            if (A < B && A < C)
-            {
-                Console.Write(A);
-                Console.WriteLine(Math.Min(B, C));
-                Console.WriteLine(Math.Max(B, C));
-            }
-            else if (B < A && B < C)
-            {
-                Console.WriteLine(B);
-                Console.WriteLine(Math.Min(A, C));
-                Console.WriteLine(Math.Max(A, C));
-            }
-            else if (C < B && C < A)
-            {
-                Console.WriteLine(C);
-                Console.WriteLine(Math.Min(A, B));
-                Console.WriteLine(Math.Max(A, C));
+                    Console.WriteLine($" {n}-ое число Фибоначчи {second}");
+                }
             }
         }
     }
