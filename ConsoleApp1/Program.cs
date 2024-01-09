@@ -1,139 +1,114 @@
-namespace Homework3
+namespace Homework4
 {
-    internal class Program //
+    internal class Program
     {
         static void Main(string[] args)
         {
-            func(); // подставление нужного номера после func для запуска соответствующей части кода на исполнение
+            func7(); // подставление нужного номера после func для запуска соответствующей части кода на исполнение
             Console.ReadLine();
         }
-        static void func1() // 1.	Пользователь вводит 2 числа (A и B). Возвести число A в степень B. 
+        // Одномерные массивы. Задачи 1-7. На 8 словил затуп и даже подсмотреть не особо помогло. 9-10 покрутил немного, но получилось не очень.
+        static void func() // Задача 1. Найти минимальный элемент массива
         {
-            Console.Write("Введите число A: ");
-            double a = Convert.ToDouble(Console.ReadLine());
-
-            Console.Write("Введите степень B: ");
-            int b = Convert.ToInt32(Console.ReadLine());
-
-            double result = 1;
-            for (int i = 0; i < b; i++)
+            int[] array = { 1, 3, -9, 7, -1, 9, 0, -4, 8 };
+            int min = array[0];
+            for (int i = 1; i < array.Length; i++)
             {
-                result *= a;
+                if (array[i] < min)
+                    min = array[i];
             }
-
-            Console.WriteLine($"Результат: {result}");
-            Console.ReadKey();
+            Console.WriteLine("Минимальный элемент массива: " + min);
         }
-        static void func2() // 2.	Пользователь вводит 1 число (A). Вывести все числа от 1 до 1000, которые делятся на A.
-
+        static void func2() // Задача 2. Найти максимальный элемент массива
         {
-            Console.WriteLine("Введите A:");
-            int A = int.Parse(Console.ReadLine());
-
-            int[] numbers = Enumerable.Range(1, 1000).ToArray();
-
-            for (int i = 0; i < numbers.Length; i++)
             {
-                if (numbers[i] % A == 0)
+                int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                int max = array[0];
+
+                for (int i = 1; i < array.Length; i++)
                 {
-                    Console.Write(numbers[i]);
-                    if (i < numbers.Length - 1)
+                    if (array[i] > max)
                     {
-                        Console.Write(", ");
+                        max = array[i];
                     }
                 }
+                Console.WriteLine("Максимальный элемент массива: " + max);
             }
-            Console.ReadLine();
         }
-        static void func3() // 3.	Пользователь вводит 1 число (A). Найдите количество положительных целых чисел, квадрат которых меньше A.
-
+        static void func3() // Задача 3. Найти индекс минимального элемента массива
         {
-            Console.WriteLine("Введите число A:");
-            int A = Convert.ToInt32(Console.ReadLine());
+            int[] array = { 5, 4, 3, 2, 1, 6, 7, 8, 9 };
+            int min = array[0];
+            int minIndex = 0;
 
-            int count = 0;
-            for (int i = 1; i * i <= A; i++)
+            for (int i = 1; i < array.Length; i++)
             {
-                if (A % i == 0 && i * i != A)
+                if (array[i] < min)
                 {
-                    count += 2;
-                }
-                else if (i * i == A)
-                {
-                    count++;
+                    min = array[i];
+                    minIndex = i;
                 }
             }
-            Console.WriteLine($"Количество положительных целых чисел, квадрат которых меньше {A}, равно {count}");
-            Console.ReadKey();
+            Console.WriteLine($"Индекс минимального элемента массива: {minIndex}");
         }
-        static void func4() // 4.	Пользователь вводит 1 число (A). Вывести наибольший делитель (кроме самого A). Кроме самого не получилось)
+        static void func4() // Задача 4. Найти индекс максимального элемента массива
         {
-            Console.Write("Введите число A: ");
-            int number = int.Parse(Console.ReadLine());
-            int maxdivide = 1;
-            for (int i = 2; i <= number; i++)
-            {
-                if (number % i == 0)
-                {
-                    maxdivide = i;
-                }
-            }
-
-            Console.WriteLine($"Наибольший делитель числа {number} равен {maxdivide}");
-            Console.ReadKey();
+            int[] array = { 1, 2, 3, 4, 5, 9, 8, 7, 6 };
+            int maxValue = array.Max();
+            int maxIndex = array.ToList().IndexOf(maxValue);
+            Console.WriteLine($"Индекс максимального элемента массива: {maxIndex}");
         }
-        static void func5() // 5.	Пользователь вводит 2 числа (A и B). Вывести сумму всех чисел из диапазона от A до B, которые делятся без остатка на 7. (Учтите, что при вводе B может оказаться меньше A).
+        static void func5() // Задача 5. Посчитать сумму элементов массива с нечетными индексами
         {
-            Console.Write("Введите число A: ");
-            int a = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Введите число B: ");
-            int b = Convert.ToInt32(Console.ReadLine());
-
+            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             int sum = 0;
-
-            for (int i = a; i <= b; i++)
+            for (int i = 0; i < array.Length; i += 2)
             {
-                if (i % 7 == 0)
-                {
-                    sum += i;
-                }
+                sum += array[i];
             }
-
-            Console.WriteLine("Сумма чисел, кратных числу 7: " + sum);
+            Console.WriteLine($"Сумма элементов массива с нечетными индексами: {sum}");
         }
-        static void func6() // 6.	Пользователь вводит 1 положительное число (N). Выведите N-ое число ряда фибоначчи. В ряду фибоначчи каждое следующее число является суммой двух предыдущих. Первое и второе считаются равными 1.
+        static void func6() // Задача 6. Сделать реверс массива (массив в обратном направлении)
         {
+            // Создаем исходный массив
+            int[] originalArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
+            // Создаем новый массив, который будет содержать реверсированный массив
+            int[] reversedArray = new int[originalArray.Length];
+
+            // Проходим по каждому элементу исходного массива
+            for (int i = 0; i < originalArray.Length; i++)
             {
-                Console.Write("Введите целое положительное число N: ");
-                int n = int.Parse(Console.ReadLine());
-                FibonacciHelper(n);
+                // Записываем последний элемент исходного массива в конец реверсированного массива
+                reversedArray[originalArray.Length - i - 1] = originalArray[i];
             }
-            static void FibonacciHelper(int n)
+
+            // Выводим реверсированный массив на экран
+            for (int i = 0; i < reversedArray.Length; i++)
             {
-                if (n <= 0)
+                Console.Write(reversedArray[i]);
+                if (i != reversedArray.Length - 1)
                 {
-                    throw new ArgumentException("число N является положительным");
-                }
-                else if (n == 1 || n == 2)
-                {
-                    Console.WriteLine($"Число Фибоначчи {n} равняется {1}");
-                }
-                else
-                {
-                    int first = 1;
-                    int second = 1;
-
-                    for (int i = 2; i < n; i++)
-                    {
-                        int result = first + second;
-                        first = second;
-                        second = result;
-                    }
-
-                    Console.WriteLine($" {n}-ое число Фибоначчи {second}");
+                    Console.Write(", ");
                 }
             }
+        }
+        static void func7() // Задача 7. Посчитать количество нечетных элементов массива  
+        {
+            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+            int count = 0;
+            foreach (var number in numbers)
+            {
+                if (number % 2 == 1)
+                    count++;
+            }
+            Console.WriteLine($"Количество нечетных элементов массива: {count}");
         }
     }
 }
+
+
+
+
+
+
