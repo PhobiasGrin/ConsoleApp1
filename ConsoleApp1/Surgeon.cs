@@ -13,11 +13,9 @@ namespace ConsoleApp1
         {
             this.bodyPart = bodyPart;
         }
-
         override public void Treat()
         {
             Console.WriteLine("Surgeon treats " + name + " " + bodyPart);
         }
-
     }
 }

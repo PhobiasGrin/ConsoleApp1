@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class Dentist : Doctor
+    public class Ent : Doctor
     {
-        public Dentist(String name) : base(name)
+        public string ears;
+        public Ent(String name, string ears) : base(name)
         {
+            this.ears = ears;
         }
         override public void Treat()
         {
-            Console.WriteLine("Dentist treats " + name);
+            Console.WriteLine("Ent treats " + name + " " + ears);
         }
     }
 }

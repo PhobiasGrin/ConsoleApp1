@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    abstract public class Doctor
+    abstract public class Administration 
     {
         public String name;
-        public Doctor(String name)
+        public Administration(String name)
         {
             this.name = name;
         }
-        abstract public void Treat();
+        abstract public void Manage();
     }
 }
