@@ -23,21 +23,40 @@ namespace ConsoleApp1
             doctors.Add(ther);
             doctors.Add(en);
             doctors.Add(oph);
-            foreach (Doctor doctor in doctors)
+            /*foreach (Doctor doctor in doctors)
             {
                 doctor.Treat();
-            }
+            }*/
             ChiefMedician Polly = new ChiefMedician("polly", "fired");
             Bookkeeper Sara = new Bookkeeper("Sara", "salary");
 
             List<Administration> administrations = new List<Administration>();
             administrations.Add(Polly);
             administrations.Add(Sara);
-            foreach (Administration administration in administrations)
+/*            foreach (Administration administration in administrations)
             {
                 administration.Manage();
+            }*/
+
+/*            List<IWorkable> workables = new List<IWorkable>()
+            {
+                sur, den,ther, en, oph, Polly, Sara
+            };
+            foreach (var workable in workables)
+            {
+                workable.Work();
+            }*/
+            List<IWRable> wRables = new List<IWRable>() //одна коллекция на объединенный интерфейс.
+            {
+                sur, den,ther, en, oph, Polly, Sara
+            };
+            foreach (var wRable in wRables)
+            {
+                wRable.Work();
+                wRable.Rest();
             }
             Console.ReadLine();
+
         }
     }
 }

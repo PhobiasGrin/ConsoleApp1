@@ -15,5 +15,9 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Dentist treats " + name);
         }
+        public override void Rest()
+        {
+            Console.WriteLine("Dentist walks on Paris");
+        }
     }
 }

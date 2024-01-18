@@ -6,13 +6,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    abstract public class Doctor
+    abstract public class Doctor : Employee
     {
-        public String name;
+/*        public String name;*/
         public Doctor(String name)
         {
             this.name = name;
         }
         abstract public void Treat();
+        public override void Work()
+        {
+            this.Treat();
+        }
+        public override void Rest() 
+        { 
+            Console.WriteLine("Resting"); 
+        }
     }
 }
