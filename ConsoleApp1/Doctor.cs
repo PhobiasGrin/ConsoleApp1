@@ -8,7 +8,6 @@ namespace ConsoleApp1
 {
     abstract public class Doctor : Employee
     {
-/*        public String name;*/
         public Doctor(String name)
         {
             this.name = name;
