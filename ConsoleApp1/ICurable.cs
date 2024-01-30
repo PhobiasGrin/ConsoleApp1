@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal interface IСurable : IAssignable, IReceivable
+    internal interface ICurable : IAssignable, IReceivable
     {
     }
 }

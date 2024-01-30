@@ -14,7 +14,8 @@ namespace ConsoleApp1
             this.salary = salary;
         }
 
-        override public void Manage()
+        //override public void Manage()
+        override public void Work()
         {
             Console.WriteLine("Bookkeeper accrues" + name + " " + salary);
         }

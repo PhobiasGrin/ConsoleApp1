@@ -13,9 +13,9 @@ Vitamin Vita = new Vitamin("Retinol", "Stomack");
 Vitamin Vitb = new Vitamin("Tiamin", "Head");
 Vitamin Vitc = new Vitamin("Ascorbin", "Back");
 Vitamin Vitd = new Vitamin("Holycalciferol", "Mind");
-Antibiotic Lev = new Antibiotic("Penicillin", "Infection");
-Antibiotic Tetr = new Antibiotic("Cephalosporins", "Bacterial");
-Antibiotic Linc = new Antibiotic("Tetracycline", "Acne");
+//Antibiotic Lev = new Antibiotic("Penicillin", "Infection");
+//Antibiotic Tetr = new Antibiotic("Cephalosporins", "Bacterial");
+//Antibiotic Linc = new Antibiotic("Tetracycline", "Acne");
 Hormone Trip = new("Triptamin", "Mood");
 Hormone Pep = new Hormone("Peptide", "CNS");
 Hormone Ster = new Hormone("Sterin", "Mushroom");
@@ -50,16 +50,25 @@ medicines.Add(Vita);
 medicines.Add(Vitb);
 medicines.Add(Vitc);
 medicines.Add(Vitd);
-medicines.Add(Lev);
-medicines.Add(Tetr);
-medicines.Add(Linc);
+//medicines.Add(Lev);
+//medicines.Add(Tetr);
+//medicines.Add(Linc);
 medicines.Add(Trip);
 medicines.Add(Pep);
 medicines.Add(Ster);
 
-List<IСurable> wCurables = new List<IСurable>()
+List<Antibiotic> antibiotics = new List<Antibiotic>();
+antibiotics.Add(new Antibiotic ("Penicilin", AntibioticType.Infection));
+antibiotics.Add(new Antibiotic ("Cephalosporins", AntibioticType.Bacterial));
+antibiotics.Add(new Antibiotic ("Tetracycline", AntibioticType.Acne));
+
+List<ICurable> curables = new List<ICurable>();
+curables.AddRange(medicines);
+//curables.AddRange(doctors);
+
+List<ICurable> wCurables = new List<ICurable>()
             {
-               Vita, Vitb, Vitc, Vitd,Lev, Tetr, Linc, Trip, Pep, Ster
+               Vita, Vitb, Vitc, Vitd,Trip, Pep, Ster //Lev, Tetr, Linc,
             };
 foreach (var wCurable in wCurables)
 {

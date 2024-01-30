@@ -13,11 +13,12 @@ namespace ConsoleApp1
         {
             this.name = name;
         }
-        abstract public void Manage();
-        public override void Work()
-        {
-            this.Manage();
-        }
+        //abstract public void Manage();
+        //public override void Work()
+        //{
+            //this.Manage();
+            //this.Work();
+        //}
         public override void Rest()
         {
             Console.WriteLine("Resting");

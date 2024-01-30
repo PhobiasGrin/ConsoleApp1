@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public abstract class Treatment: IСurable
+    public abstract class Treatment: ICurable
     {
         public string name;
         public int age;

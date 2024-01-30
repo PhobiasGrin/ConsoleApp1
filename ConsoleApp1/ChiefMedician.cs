@@ -14,7 +14,8 @@ namespace ConsoleApp1
             this.decision = decision;
         }
 
-        override public void Manage()
+        //override public void Manage()
+        override public void Work()
         {
             Console.WriteLine("Chiefmedician manage " + name + " " + decision);
         }

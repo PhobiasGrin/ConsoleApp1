@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    
     public class Hormone : Medicine
     {
         public string types;
