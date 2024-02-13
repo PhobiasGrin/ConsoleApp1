@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace ConsoleApp1.Doctors
 {
     public class Therapist : Doctor
     {
-        public Therapist(String name) : base(name)
+        public Therapist(string name, DoctorType doctorType) : base(name, doctorType)
         {
 
         }

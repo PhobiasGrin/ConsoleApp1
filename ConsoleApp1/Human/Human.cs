@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public abstract class Employee:IWRable
+    public abstract class Human:IWRable
     {
         public string name;
         public int age;
@@ -15,6 +15,7 @@ namespace ConsoleApp1
         {
 
         }
+        public abstract void OnFire();
     }
     
 }
